@@ -1,3 +1,3 @@
 # Netsnake
-## here
 ## Bootstrap
+## JQuery

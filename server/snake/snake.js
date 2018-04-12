@@ -1,16 +1,18 @@
- class SnakeGame{
+class SnakeGame{
 constructor(){
-var snakeCanvas = document.getElementById("snakeCanvas");
-var context =snakeCanvas.getContext("2d");
-context.fillRect(10,10,50,50);
+this.snakeCanvas = document.getElementById("snakeCanvas");
+ this.context =snakeCanvas.getContext("2d");
+this.context.fillRect(10,10,50,50);
+this.interval = setInterval(this.updateSnakeCanvas,20);
+}
+clearCanvas(){
+     this.context.clearRect(0, 0, this.snakeCanvas.width, this.snakeCanvas.height);
+}
+updateSnakeCanvas(){
+   clearCanvas(); 
+   this.snakeCanvas.update();
+}
 
 }
 
-snakeField(){
-
-
-}
-
- }
- 
  const game = new SnakeGame()
