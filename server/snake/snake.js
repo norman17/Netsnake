@@ -6,12 +6,13 @@ this.snakeCanvas = document.getElementById("snakeCanvas");
  //1 up,2 down,3 right, 4 left
  this.direction=1;
  this.food=0;
+ this.foodOnBoard=0;
 //this.context.fillRect(10,10,50,50);
 this.x=[];
 this.y=[];
 this.xDirection=5;
 this.yDirection=0;
-this.interval = setInterval(this.updateSnakeCanvas.bind(this),390);
+this.interval = setInterval(this.updateSnakeCanvas.bind(this),30);
 document.addEventListener('keypress',this.moveUp.bind(this));
 this.snakeHead = {
     x: 0,
@@ -26,13 +27,22 @@ this.snakeHead = {
 }
     //updates snakecanvas
 updateSnakeCanvas(){
-    this.x.push(this.snakeHead.x);
+this.x.push(this.snakeHead.x);
 this.y.push(this.snakeHead.y);
 this.snakeHead.prevx=this.snakeHead.x;
 this.snakeHead.prevy=this.snakeHead.y;        
 this.snakeHead.x+=this.xDirection;
 this.snakeHead.y+=this.yDirection;
-   
+var i;
+for( i=0; i < this.x.length;i++){
+if(this.snakeHead.x==this.x[i]){
+    if(this.snakeHead.y==this.y[i]){
+        //alert('heyyy');
+        this.food=0;
+    }
+}
+}   
+
 if(this.food>25){
     //if there snake is 
     if(this.x.length>0){
@@ -43,13 +53,8 @@ this.clearEnd(this.snakeHead,this.x.pop(),this.y.pop());}
 } else{
     this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
 }
-this.food+=5;
-
-
-
-  
+this.food+=5; 
 }
-
 //pass in obj that contain x y size and color to have them rendered on canvas
 updateSnake(obj,x,y){
     this.context.fillStyle=obj.color;
@@ -65,6 +70,7 @@ clearCanvas(){
      this.context.clearRect(0, 0, this.snakeCanvas.width, this.snakeCanvas.height);
 
 }
+//function for event listner
 moveUp(ev){
 const key=ev.key;
 if(key==='a'){
@@ -76,7 +82,6 @@ else if(key==='s'){
     this.yDirection=5;
 }
 else if(key==='w'){
-
     this.xDirection=0;
     this.yDirection=-5;
 }
