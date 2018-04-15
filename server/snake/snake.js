@@ -9,8 +9,10 @@ this.snakeCanvas = document.getElementById("snakeCanvas");
 //this.context.fillRect(10,10,50,50);
 this.x=[];
 this.y=[];
-this.interval = setInterval(this.updateSnakeCanvas.bind(this),350);
-
+this.xDirection=5;
+this.yDirection=0;
+this.interval = setInterval(this.updateSnakeCanvas.bind(this),390);
+document.addEventListener('keypress',this.moveUp.bind(this));
 this.snakeHead = {
     x: 0,
     y: 0,
@@ -28,21 +30,18 @@ updateSnakeCanvas(){
 this.y.push(this.snakeHead.y);
 this.snakeHead.prevx=this.snakeHead.x;
 this.snakeHead.prevy=this.snakeHead.y;        
-this.snakeHead.x+=0;
-        this.snakeHead.y+=5;
+this.snakeHead.x+=this.xDirection;
+this.snakeHead.y+=this.yDirection;
    
 if(this.food>25){
+    //if there snake is 
     if(this.x.length>0){
-        
         this.clearEnd(this.snakeHead,this.x.shift(),this.y.shift());
-        this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y)
-        //this.x.push(this.snakeHead.x);
-        //this.y.push(this.snakeHead.y);
+        this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
     } else{
 this.clearEnd(this.snakeHead,this.x.pop(),this.y.pop());}
 } else{
     this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
-   
 }
 this.food+=5;
 
@@ -66,18 +65,27 @@ clearCanvas(){
      this.context.clearRect(0, 0, this.snakeCanvas.width, this.snakeCanvas.height);
 
 }
-moveUp(){
-
+moveUp(ev){
+const key=ev.key;
+if(key==='a'){
+this.xDirection=-5;
+this.yDirection=0;
 }
-moveDown(){
-
+else if(key==='s'){
+    this.xDirection=0;
+    this.yDirection=5;
 }
-moveRight(){
+else if(key==='w'){
 
+    this.xDirection=0;
+    this.yDirection=-5;
 }
-moveLeft(){
+else if (key==='d'){
+    this.xDirection=5;
+    this.yDirection=0;
+}
+}
 
-}
 }
 
  const game = new SnakeGame()
