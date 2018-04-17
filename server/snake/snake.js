@@ -19,7 +19,7 @@ this.x=[];
 this.y=[];
 this.xDirection=10;
 this.yDirection=0;
-this.interval = setInterval(this.updateSnakeCanvas.bind(this),180);
+this.interval = setInterval(this.updateSnakeCanvas.bind(this),30);
 document.addEventListener('keypress',this.moveUp.bind(this));
 this.snakeHead = {
     x: 250,
@@ -41,6 +41,10 @@ this.snakeHead.prevy=this.snakeHead.y;
 this.snakeHead.x+=this.xDirection;
 this.snakeHead.y+=this.yDirection;
 var i;
+
+if(this.snakeCanvas.width < this.snakeHead.x || 0 > this.snakeHead.x || this.snakeCanvas.height < this.snakeHead.y || 0 > this.snakeHead.y){
+this.score+=1;
+}
 
 for( i=0; i < this.x.length;i++){
 if(this.snakeHead.x==this.x[i]&&this.snakeHead.y==this.y[i]){
@@ -85,12 +89,12 @@ clearEnd(obj,x,y){
 clearCanvas(){
      this.context.clearRect(0, 0, this.snakeCanvas.width, this.snakeCanvas.height);
 }
-
+//updates score board
 scoreMaker(){
-    this.scoreContext.clearRect(0, 0, 100, 100);
+    this.scoreContext.clearRect(0, 0, this.scoreBoard.width, this.scoreBoard.height);
 this.scoreContext.fillStyle = "rgba(255, 255, 255, 0.5)";
 this.scoreContext.font = "30px Arial";
-this.scoreContext.fillText(this.score,10,50);
+this.scoreContext.fillText(this.score,10,30);
 }
 
 addFood(x,y,size){
