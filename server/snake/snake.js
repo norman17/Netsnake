@@ -48,16 +48,16 @@ this.score+=1;
 
 for( i=0; i < this.x.length;i++){
 if(this.snakeHead.x==this.x[i]&&this.snakeHead.y==this.y[i]){
-        this.food=0;
+        this.food = 0;
 }
 }
 for( i=0; i < this.foodOnBoard.x.length;i++){
-if(this.snakeHead.x==this.foodOnBoard.x[i]&&this.snakeHead.y==this.foodOnBoard.y[i]){
-   this.score+=50;
-    this.foodOnBoard.x[i]+=50;
-    this.foodOnBoard.y[i]+=50;
+if(this.snakeHead.x == this.foodOnBoard.x[i] && this.snakeHead.y == this.foodOnBoard.y[i]){
+   this.score += 50;
+    this.foodOnBoard.x[i] += 50;
+    this.foodOnBoard.y[i] += 50;
     this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10); 
-    food-=15;
+    food -= 15;
 }
 }
 
