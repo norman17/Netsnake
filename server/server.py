@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+from flask import send_from_directory
 import mysql.connector as mariadb
 from datetime import date
 
@@ -13,7 +14,19 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def giveIndex():
     #return html file for the index
-    return render_template('index.html', name=name)
+    return send_from_directory('templates', 'index.html')
+
+@app.route('/index.css', methods=['GET'])
+def giveIndexCss():
+    #return html file for the index
+    return send_from_directory('templates', 'index.css')
+
+@app.route('/snake/snake.js', methods=['GET'])
+def giveSnakeJs():
+    #return html file for the index
+    print "hello world"
+    return send_from_directory('snake', 'snake.js')
+
 
 @app.route('/scoreboard', methods=['GET'])
 def giveScoreboard():
