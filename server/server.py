@@ -1,8 +1,10 @@
-from flask import flask
+from flask import Flask
 from flask import request
 from flask import render_template
 import mysql.connector as mariadb
 from datetime import date
+
+app = Flask(__name__)
 
 # mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
 # cursor = mdbconnection.cursor()
