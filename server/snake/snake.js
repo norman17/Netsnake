@@ -151,7 +151,16 @@ class SnakeGame{
                 }
             }
         }
-
+        postScore() {
+            var xml = new XMLHttpRequest();
+            xml.onreadystatechange = function() {
+                if (xml.readyState == 4 && xml.status == 200) {
+                    callback(xml.responseText);
+                }
+            }
+            xmlHttp.open("GET", URL + '?score=' + this.score.toString(), false); //NEED TO FIND URL
+            xmlHttp.send(null);
+        }
     }
 
     function startGame() {

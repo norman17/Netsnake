@@ -1,37 +1,43 @@
 <!DOCTYPE html>
- <html class="no-js">
-      <head>
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<html class="no-js">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
-          <link rel="stylesheet" href="index.css">
-          <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
-        <title>Snake Game</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+    <title>Snake Game</title>
 
-    </head>
+</head>
 <body>
     <div class="container">
         <div class="row">
-    <h1 align="center">Snake the Video Game</h1>
-     </div>
-    <div class="row">
-    <h3>Rules of game: </h3>
-     </div>
-    <div class="row">
-        <div class="column">
-    <p>Eat the apples and don't run into the wall or yourself </p>
-</div>
-        <div class="column">
-         <canvas id="scoreBoard" width="300" height="50" style="border:1px solid red;"></canvas>
-</div>
+            <h1 align="center">Snake the Video Game</h1>
+        </div>
+        <div class="row">
+            <h3>Rules of game: </h3>
+        </div>
+        <div class="row">
+            <div class="column">
+                <p>Eat the apples and don't run into the wall or yourself </p>
+            </div>
+            <div class="column">
+                <canvas id="scoreBoard" width="300" height="50" style="border:1px solid red;"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <canvas id="snakeCanvas" width="600" height="400" style="border:1px solid red;"></canvas>
+        </div>
     </div>
-<div class="row">
-<canvas id="snakeCanvas" width="600" height="400" style="border:1px solid red;"></canvas>
- </div>
-    </div>
-<script src="../snake/snake.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<button onclick="startGame()">Start Game!</button>
+    <script src="../snake/snake.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <button onclick="startGame()">Start Game!</button>
+    <form action="/postscore"> <!THIS DOESN'T WORK>
+        username: <input type="text" name="username"><br>
+        <input type="submit" value="Submit Score!" onclick="SnakeGame.postScore()">
+    <form method="get" action="/scoreboard">
+        <button>View Scoreboard!</button>
+    </form>
 </body>
-    </html>
+</html>
