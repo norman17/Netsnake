@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import send_from_directory
-#import mysql.connector as mariadb
+import mysql.connector as mariadb
 from datetime import date
 
 app = Flask(__name__)
@@ -27,6 +27,35 @@ def giveSnakeJs():
     print "hello world"
     return send_from_directory('snake', 'snake.js')
 
+@app.route('/player/<playername>')
+def givePlayerData(playername):
+    mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
+    cursor = mdbconnection.cursor()
+    qstr = "SELECT score, date FROM highscores WHERE name = \""
+    qstr += playername
+    qstr += "\" ORDER BY score DESC LIMIT 10"
+    try:
+        cursor.execute(qstr)
+    except mariadb.Error as error:
+        print ("Error: {}".format(error))
+    response = "High scores for " + playername + "\n"
+    for score, date in cursor:
+        response += "Date: " + date.strftime('%Y-%m-%d') + " Score: " + str(score) + "\n"
+    return render_template("statpage.html", text = response.split('\n'))
+
+@app.route('/scores')
+def giveScoreboardData():
+    mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
+    cursor = mdbconnection.cursor()
+    qstr = "SELECT name, score, date FROM highscores ORDER BY score DESC"
+    try:
+        cursor.execute(qstr)
+    except mariadb.Error as error:
+        print ("Error: {}".format(error))
+    response = "NetSnake High Scores:\n\n"
+    for name, score, date in cursor:
+        response += "Name: " + name + "\n Score: " + str(score) + "\n Date: " + date.strftime('%Y-%m-%d') + "\n\n"
+    return render_template("statpage.html", text = response.split('\n'))
 
 
 @app.route('/scoreboard.css', methods=['GET'])
