@@ -18,6 +18,7 @@ class SnakeGame{
         this.foodOnBoard.y.push(10);
         this.addFood(10,10,10);
         this.score=0;
+        this.justPost=false;
         this.x=[];
         this.y=[];
         this.xDirection=10;
@@ -53,7 +54,7 @@ class SnakeGame{
 
         for( i=0; i < this.x.length;i++){
             if(this.snakeHead.x==this.x[i]&&this.snakeHead.y==this.y[i]){
-                this.food = 0;
+               // this.food = 0;
                 this.onCollision();
             }
         }
@@ -63,12 +64,12 @@ class SnakeGame{
                 this.foodOnBoard.x[i] += 50;
                 this.foodOnBoard.y[i] += 50;
                 this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10);
-                this.food -= 15;
-                //this.snakeHead.length += 1; //this may need to be uncommented
+                this.food=2;
+                //this.food -= 10; //this may need to be uncommented
             }
         }
 
-        if(this.food>25){
+        if(this.food>5){
             //if there snake is
             if(this.x.length>0){
                 this.clearEnd(this.snakeHead,this.x.shift(),this.y.shift());
@@ -80,7 +81,7 @@ class SnakeGame{
                 this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
         }
         this.scoreMaker();
-        this.food+=5;
+        this.food+=1;
     }
     onCollision() {
         clearInterval(this.interval)
@@ -174,6 +175,7 @@ class SnakeGame{
         game = new SnakeGame();
     }
     function postScore() {
+        if(this.justPost==false){
             var username = document.getElementById("username").value;
             fetch('/postscore?score=' + game.score.toString() + '&username=' + username, { method: 'POST' })
             /*
@@ -186,5 +188,7 @@ class SnakeGame{
             var username = document.getElementById("username").value;
             xml.open("POST", '/postscore?score=' + game.score.toString() + '&username=' + username, false); //NEED TO FIND URL
             xml.send(null);
-            */
+        */
+    this.justPost==true;   
+    }
         }
