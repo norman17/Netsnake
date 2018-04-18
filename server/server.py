@@ -43,7 +43,7 @@ def givePlayerData(playername):
         response += "Date: " + date.strftime('%Y-%m-%d') + " Score: " + str(score) + "\n"
     return render_template("statpage.html", text = response.split('\n'))
 
-@app.route('/scores')
+@app.route('/players')
 def giveScoreboardData():
     mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
     cursor = mdbconnection.cursor()
@@ -78,13 +78,9 @@ def giveScoreboard():
     except mariadb.Error as error:
         print ("Error: {}".format(error))
     #return html file that has scoreboard
-    i = 0
     sortedScores = []
-    for username, score in cursor:
-        sortedScores.append((username, score))
-        if i == 10:
-            break
-
+    for username, score, date in cursor:
+        sortedScores.append((username, score, date))
 
     cursor.close()
     mdbconnection.close()
@@ -101,11 +97,15 @@ def postScore():
     app.logger.info(score)
     app.logger.info(username)
     app.logger.info(submitted_date)
+
+    insquery = "INSERT INTO highscores (name, score, date) VALUES (\"" + username + "\"," + str(score) + ",\"" + submitted_date.strftime('%Y-%m-%d') + "\")"
+
     try:
-        cursor.execute("INSERT INTO highscores (username, score, submitted_date) VALUES (%s,%f)", (name, score, date))
+        cursor.execute(insquery)
     except mariadb.Error as error:
         print ("Error: {}".format(error))
 
+    mdbconnection.commit()
     cursor.close()
     mdbconnection.close()
     return 'hi'
