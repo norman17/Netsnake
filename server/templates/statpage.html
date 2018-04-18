@@ -1,0 +1,8 @@
+<html>
+    {%- for line in text -%}
+        {{ line }}
+        {%- if not loop.last -%}
+            <br />
+        {%- endif -%}
+    {%- endfor -%}
+</html>
