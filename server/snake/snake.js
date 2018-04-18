@@ -1,3 +1,6 @@
+var isrunning = 0;
+var game;
+
 class SnakeGame{
     //Snake game constructor
     constructor(){
@@ -31,6 +34,7 @@ class SnakeGame{
             prevy: 0,
             direction: "right",
         }
+        isrunning = 1;
 
     }
     //updates snakecanvas
@@ -43,7 +47,7 @@ class SnakeGame{
         this.snakeHead.y+=this.yDirection;
         var i;
 
-        if(this.snakeCanvas.width < this.snakeHead.x || 0 > this.snakeHead.x || this.snakeCanvas.height < this.snakeHead.y || 0 > this.snakeHead.y){
+        if(this.snakeCanvas.width - 1 < this.snakeHead.x || 0 > this.snakeHead.x || this.snakeCanvas.height - 1 < this.snakeHead.y || 0 > this.snakeHead.y){
             this.onCollision();
         }
 
@@ -60,6 +64,7 @@ class SnakeGame{
                 this.foodOnBoard.y[i] += 50;
                 this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10);
                 this.food -= 15;
+                //this.snakeHead.length += 1; //this may need to be uncommented
             }
         }
 
@@ -78,8 +83,8 @@ class SnakeGame{
         this.food+=5;
     }
     onCollision() {
-        while (1) {
-        }
+        clearInterval(this.interval)
+        isrunning = 0;
     }
         //pass in obj that contain x y size and color to have them rendered on canvas
     updateSnake(obj,x,y){
@@ -156,21 +161,30 @@ class SnakeGame{
                 }
             }
         }
-        postScore() {
+
+    }
+
+    function startGame() {
+        if (isrunning == 1) {
+            return;
+        }
+        var canv = document.getElementById("snakeCanvas");
+        var context = canv.getContext("2d");
+        context.clearRect(0, 0, canv.width, canv.height);
+        game = new SnakeGame();
+    }
+    function postScore() {
+            var username = document.getElementById("username").value;
+            fetch('/postscore?score=' + game.score.toString() + '&username=' + username, { method: 'POST' })
+            /*
             var xml = new XMLHttpRequest();
             xml.onreadystatechange = function() {
                 if (xml.readyState == 4 && xml.status == 200) {
                     callback(xml.responseText);
                 }
             }
-            xmlHttp.open("GET", URL + '?score=' + this.score.toString(), false); //NEED TO FIND URL
-            xmlHttp.send(null);
+            var username = document.getElementById("username").value;
+            xml.open("POST", '/postscore?score=' + game.score.toString() + '&username=' + username, false); //NEED TO FIND URL
+            xml.send(null);
+            */
         }
-    }
-
-    function startGame() {
-        var canv = document.getElementById("snakeCanvas");
-        var context = canv.getContext("2d");
-        context.clearRect(0, 0, canv.width, canv.height);
-        const game = new SnakeGame();
-    }
