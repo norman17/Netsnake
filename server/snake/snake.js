@@ -19,7 +19,7 @@ class SnakeGame{
         this.y=[];
         this.xDirection=10;
         this.yDirection=0;
-        this.interval = setInterval(this.updateSnakeCanvas.bind(this),30);
+        this.interval = setInterval(this.updateSnakeCanvas.bind(this),100);
         document.addEventListener('keypress',this.moveUp.bind(this));
         this.snakeHead = {
             x: 250,
@@ -44,12 +44,13 @@ class SnakeGame{
         var i;
 
         if(this.snakeCanvas.width < this.snakeHead.x || 0 > this.snakeHead.x || this.snakeCanvas.height < this.snakeHead.y || 0 > this.snakeHead.y){
-            this.score+=1;
+            this.onCollision();
         }
 
         for( i=0; i < this.x.length;i++){
             if(this.snakeHead.x==this.x[i]&&this.snakeHead.y==this.y[i]){
                 this.food = 0;
+                this.onCollision();
             }
         }
         for( i=0; i < this.foodOnBoard.x.length;i++){
@@ -70,17 +71,21 @@ class SnakeGame{
             } else{
                 this.clearEnd(this.snakeHead,this.x.pop(),this.y.pop());}
 
-            } else{
+        } else{
                 this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
-            }
-            this.scoreMaker();
-            this.food+=5;
         }
+        this.scoreMaker();
+        this.food+=5;
+    }
+    onCollision() {
+        while (1) {
+        }
+    }
         //pass in obj that contain x y size and color to have them rendered on canvas
-        updateSnake(obj,x,y){
+    updateSnake(obj,x,y){
             this.context.fillStyle=obj.color;
             this.context.fillRect(x,y,obj.size,obj.size);
-        }
+    }
 
         //clears Snake end from canvas
         clearEnd(obj,x,y){
@@ -164,5 +169,8 @@ class SnakeGame{
     }
 
     function startGame() {
+        var canv = document.getElementById("snakeCanvas");
+        var context = canv.getContext("2d");
+        context.clearRect(0, 0, canv.width, canv.height);
         const game = new SnakeGame();
     }
