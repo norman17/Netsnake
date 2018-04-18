@@ -1,6 +1,6 @@
 var isrunning = 0;
 var game;
-
+justPost=false;
 class SnakeGame{
     //Snake game constructor
     constructor(){
@@ -10,6 +10,7 @@ class SnakeGame{
         this.scoreContext= scoreBoard.getContext("2d");
         this.scoreContext.fillRect(10,30,50,50);
         this.food=0;
+        justPost=false;
         this.foodOnBoard={x:[],y:[],};
         this.foodOnBoard.x.push(70);
         this.foodOnBoard.y.push(70);
@@ -18,7 +19,6 @@ class SnakeGame{
         this.foodOnBoard.y.push(10);
         this.addFood(10,10,10);
         this.score=0;
-        this.justPost=false;
         this.x=[];
         this.y=[];
         this.xDirection=10;
@@ -65,7 +65,6 @@ class SnakeGame{
                 this.foodOnBoard.y[i] += 50;
                 this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10);
                 this.food=2;
-                //this.food -= 10; //this may need to be uncommented
             }
         }
 
@@ -175,7 +174,7 @@ class SnakeGame{
         game = new SnakeGame();
     }
     function postScore() {
-        if(this.justPost==false){
+        if(justPost==false){
             var username = document.getElementById("username").value;
             fetch('/postscore?score=' + game.score.toString() + '&username=' + username, { method: 'POST' })
             /*
@@ -189,6 +188,6 @@ class SnakeGame{
             xml.open("POST", '/postscore?score=' + game.score.toString() + '&username=' + username, false); //NEED TO FIND URL
             xml.send(null);
         */
-    this.justPost==true;   
+    justPost==true;   
     }
         }
