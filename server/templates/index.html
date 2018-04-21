@@ -10,34 +10,52 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <h1 align="center">Snake the Video Game</h1>
-        </div>
-        <div class="row">
-            <h3>Rules of game: </h3>
-        </div>
-        <div class="row">
-            <div class="column">
-                <p>Eat the apples and don't run into the wall or yourself </p>
+            <div class="row">  
+                <nav class = "navbar nabar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand">Snake</a>
+                   
+                    <button class="btn btn-outline-success" type="button">View HighScore</button>
+                    <button class="btn btn-outline-success" type="button">About</button>
+                    <h1 align="center">Snake the Video Game</h1>
+                    <img src="https://i.kinja-img.com/gawker-media/image/upload/s--Enlk8SCn--/c_scale,fl_progressive,q_80,w_800/ezkwu6j28tvjpxrs3hxw.jpg" alt="Smiley face" height="60" width="360">
+                </nav>
             </div>
-            <div class="column">
+        <div class="row">
+           
+        </div>
+        <div class="row">
+            <h3>Rules of game: Eat the apples and don't run into the wall or yourself</h3>
+        </div>
+        <div class="row" id="rules">
+                <div class="col-md-5" >
+                    
+                </div>
+            <div class="col-md-1" >
+                <h3>Score: </h3>
+            </div>
+            <div class="col-md-1">
                 <canvas id="scoreBoard" width="300" height="50" style="border:1px solid red;"></canvas>
             </div>
         </div>
         <div class="row">
-            <canvas id="snakeCanvas" width="600" height="400" style="border:1px solid red;"></canvas>
+            <canvas id="snakeCanvas" width="800" height="400" style="border:1px solid red;"></canvas>
+            
         </div>
-    </div>
+
+        <div class="row">
+        <button type="button" class="btn btn-primary" onclick="startGame()">Start Game!</button>
+    <!-- <form action="/postscore" method="post"> <!THIS DOESN'T WORK> -->
+        <input type="text" name="username" placeholder="Username" id="username"><br>
+        <input type="submit" class="btn btn-primary" value="Submit Score!" onclick="postScore()">
+    <form method="get" action="/players">
+        <button type="button" class="btn btn-primary">View Scoreboard!</button>
+    </form>
+</div>   
+</div>
     <script src="../snake/snake.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <button onclick="startGame()">Start Game!</button>
-    <!-- <form action="/postscore" method="post"> <!THIS DOESN'T WORK> -->
-        username: <input type="text" name="username" id="username"><br>
-        <input type="submit" value="Submit Score!" onclick="postScore()">
-    <form method="get" action="/players">
-        <button>View Scoreboard!</button>
-    </form>
+    
 </body>
 </html>
