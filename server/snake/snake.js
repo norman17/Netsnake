@@ -97,6 +97,9 @@ class SnakeGame{
                     this.obstacle.x.push(this.x[0]+greyx)
                     this.obstacle.y.push(this.y[0]+greyy)
                     this.addFood(this.x[0]+greyx,this.y[0]+greyy,10,"grey");
+                    if(this.obstacle.x.length>3){
+                        this.clearEnd(10,this.obstacle.x.shift(),this.obstacle.y.shift())
+                    }
                 }
             }
         }
@@ -104,10 +107,10 @@ class SnakeGame{
         if(this.food>5){
             //if there snake is
             if(this.x.length>0){
-                this.clearEnd(this.snakeHead,this.x.shift(),this.y.shift());
+                this.clearEnd(this.snakeHead.size,this.x.shift(),this.y.shift());
                 this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
             } else{
-                this.clearEnd(this.snakeHead,this.x.pop(),this.y.pop());}
+                this.clearEnd(this.snakeHead.size,this.x.pop(),this.y.pop());}
 
         } else{
                 this.updateSnake(this.snakeHead,this.snakeHead.x,this.snakeHead.y);
@@ -126,8 +129,8 @@ class SnakeGame{
     }
 
         //clears Snake end from canvas
-        clearEnd(obj,x,y){
-            this.context.clearRect(x, y, obj.size, obj.size);
+        clearEnd(size,x,y){
+            this.context.clearRect(x, y, size, size);
         }
         //clears Snake canvas of objects
         clearCanvas(){
