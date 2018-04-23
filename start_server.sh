@@ -6,7 +6,7 @@ cd server
 
 export FLASK_APP=server.py
 
-flask run --host=0.0.0.0 >> server.log 2>&1 & 
+flask run --host=0.0.0.0 > server.log 2>&1 & 
 
 cd ..
 
@@ -20,7 +20,9 @@ ps faux | grep [f]lask
 
 echo
 
-echo "If no process ID is listed above, the server has failed to start. Check server.log for more info."
+echo "If no process ID or is listed above, the server has failed to start."
+
+echo "If more than one process is listed above, the server was already running. Check server.log for more info."
 
 echo "If you are running this on the original machine, the game can be reached at http://netsnake.freefall.in:5000"
 
