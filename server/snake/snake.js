@@ -18,6 +18,7 @@ class SnakeGame{
         this.foodOnBoard.x.push(10);
         this.foodOnBoard.y.push(10);
         this.addFood(10,10,10);
+        this.object=[];//used to keep track of hitable objects
         this.score=0;
         this.x=[];
         this.y=[];
