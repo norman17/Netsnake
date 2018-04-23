@@ -14,11 +14,11 @@ class SnakeGame{
         this.foodOnBoard={x:[],y:[],};
         this.foodOnBoard.x.push(70);
         this.foodOnBoard.y.push(70);
-        this.addFood(70,70,10);
+        this.addFood(70,70,10,"red");
         this.foodOnBoard.x.push(10);
         this.foodOnBoard.y.push(10);
-        this.addFood(10,10,10);
-        this.object=[];//used to keep track of hitable objects
+        this.addFood(10,10,10,"red");
+        this.obstacle={x:[],y:[],};//used to keep track of hitable objects
         this.score=0;
         this.x=[];
         this.y=[];
@@ -59,13 +59,45 @@ class SnakeGame{
                 this.onCollision();
             }
         }
+        for( i=0; i < this.obstacle.x.length;i++){
+            if(this.snakeHead.x==this.obstacle.x[i]&&this.snakeHead.y==this.obstacle.y[i]){
+               // this.food = 0;
+                this.onCollision();
+            }
+        }
+
         for( i=0; i < this.foodOnBoard.x.length;i++){
             if(this.snakeHead.x == this.foodOnBoard.x[i] && this.snakeHead.y == this.foodOnBoard.y[i]){
                 this.score += 50;
+                if(this.foodOnBoard.x[i] + 50<this.snakeCanvas.width&&this.foodOnBoard.y[i] + 50<this.snakeCanvas.height){
                 this.foodOnBoard.x[i] += 50;
                 this.foodOnBoard.y[i] += 50;
-                this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10);
+                this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10,"red");}
+                else{
+                    this.foodOnBoard.x[i] = 30;
+                    this.foodOnBoard.y[i] = 30;
+                    this.addFood(30,30,10,"red");
+
+                }
                 this.food=2;
+                if(this.x[0] !== 0 || this.y[0] !== 0){
+                    var greyx=-10;
+                    var greyy=-10;
+                    if(this.x[1]<this.x[0]){
+                        greyx=10;
+                    }else if(this.x[1]==this.x[0]){
+                        greyx=0;   
+                    }
+                    if(this.y[1]<this.y[0]){
+                        greyy=10;
+                    }
+                    else if(this.y[1]==this.y[0]){
+                        greyy=0;   
+                    }
+                    this.obstacle.x.push(this.x[0]+greyx)
+                    this.obstacle.y.push(this.y[0]+greyy)
+                    this.addFood(this.x[0]+greyx,this.y[0]+greyy,10,"grey");
+                }
             }
         }
 
@@ -109,8 +141,8 @@ class SnakeGame{
             this.scoreContext.fillText(this.score,10,30);
         }
 
-        addFood(x,y,size){
-            this.context.fillStyle="red";
+        addFood(x,y,size,color){
+            this.context.fillStyle=color;
             this.context.fillRect(x,y,size,size);
         }
 
