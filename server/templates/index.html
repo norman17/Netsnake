@@ -10,24 +10,24 @@
 </head>
 <body>
     <div class="container" id="contained">
-            <div class="row">  
+            <div class="row">
                 <nav class = "navbar nabar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand">Snake</a>
                     <form method="get" action="/players">
                         <a class="nav-link" href="/players">View High Scores</a>
                     </form>
-                   
+
                    <a class="nav-link" href="/about">About</a>
                     <h1 align="center">Snake the Video Game</h1>
-                    <form id="searcher" method="get" action="/player/guy">
+                    <form id="searcher" method="get">
                         <input type="form-contol mr-sm-2" type="search" placeholder="username">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit">Search Scores</button>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit" onclick="getUserScores()">Search Scores</button>
                     </form>
-                   
+
                 </nav>
             </div>
         <div class="row">
-           
+
         </div>
         <div class="row">
             <h3>Rules of game: Eat the apples and don't run into the wall or yourself.</h3>
@@ -45,23 +45,23 @@
         </div>
         <div class="row">
             <canvas id="snakeCanvas" width="800" height="400" style="border:1px solid red;"></canvas>
-            
+
         </div>
 
         <div class="row">
-        
+
     <!-- <form action="/postscore" method="post"> <!THIS DOESN'T WORK> -->
         <input type="text" name="username" placeholder="Username" id="username"><br>
         <input type="submit" class="btn btn-primary" value="Submit Score!" onclick="postScore()">
     <form method="get" action="/players">
         <button type="button" class="btn btn-primary">View Scoreboard!</button>
     </form>
-</div>   
+</div>
 </div>
     <script src="../snake/snake.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    
+
 </body>
 </html>
