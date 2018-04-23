@@ -12,6 +12,16 @@ cd ..
 
 echo "Done. Server log can be found in server/server.log"
 
+echo "Process ID and path are as follows:"
+
+echo
+
+ps faux | grep [f]lask
+
+echo
+
+echo "If no process ID is listed above, the server has failed to start. Check server.log for more info."
+
 echo "If you are running this on the original machine, the game can be reached at http://netsnake.freefall.in:5000"
 
 echo "Otherwise, try port 5000 on your local loopback or external IP."
