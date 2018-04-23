@@ -73,7 +73,7 @@ class SnakeGame{
                 if(this.foodOnBoard.x[i] + 50<this.snakeCanvas.width&&this.foodOnBoard.y[i] + 50<this.snakeCanvas.height){
                 this.foodOnBoard.x[i] += 50;
                 this.foodOnBoard.y[i] += 50;
-                this.addFood(this.snakeHead.x+50,this.snakeHead.y+50,10,"red");}
+                this.addFood(Math.random(1, this.snakeCanvas.width),Math.random(1, this.snakeCanvas.height),10,"red");}
                 else{
                     this.foodOnBoard.x[i] = 30;
                     this.foodOnBoard.y[i] = 30;
@@ -87,13 +87,13 @@ class SnakeGame{
                     if(this.x[1]<this.x[0]){
                         greyx=10;
                     }else if(this.x[1]==this.x[0]){
-                        greyx=0;   
+                        greyx=0;
                     }
                     if(this.y[1]<this.y[0]){
                         greyy=10;
                     }
                     else if(this.y[1]==this.y[0]){
-                        greyy=0;   
+                        greyy=0;
                     }
                     this.obstacle.x.push(this.x[0]+greyx)
                     this.obstacle.y.push(this.y[0]+greyy)
@@ -210,7 +210,7 @@ class SnakeGame{
         game = new SnakeGame();
     }
     function getUser() {
-          document.location.href="https://google.com";    
+          document.location.href="https://google.com";
     }
     function postScore() {
        // if(justPost===false){
@@ -227,6 +227,6 @@ class SnakeGame{
             xml.open("POST", '/postscore?score=' + game.score.toString() + '&username=' + username, false); //NEED TO FIND URL
             xml.send(null);
         */
-    //justPost=true;   
+    //justPost=true;
     //}
         }
