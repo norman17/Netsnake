@@ -13,17 +13,12 @@
             <div class="row">  
                 <nav class = "navbar nabar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand">Snake</a>
-                    <form method="get" action="/players">
                         <a class="nav-link" href="/players">View High Scores</a>
-                    </form>
-                   
                    <a class="nav-link" href="/about">About</a>
                     <h1 align="center">Snake the Video Game</h1>
-                    <form id="searcher" method="get" action="/player/guy">
-                        <input type="form-contol mr-sm-2" type="search" placeholder="username">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit">Search Scores</button>
-                    </form>
-                   
+              
+                        <input type="form-contol mr-sm-2" type="search" placeholder="username" id="user">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit" onclick="getUser()">Search Scores</button>
                 </nav>
             </div>
         <div class="row">

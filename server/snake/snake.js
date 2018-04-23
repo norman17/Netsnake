@@ -14,6 +14,7 @@ class SnakeGame{
         this.foodOnBoard={x:[],y:[],};
         this.foodOnBoard.x.push(70);
         this.foodOnBoard.y.push(70);
+        this.movingObject={x: 0,y: 0,};//
         this.addFood(70,70,10,"red");
         this.foodOnBoard.x.push(10);
         this.foodOnBoard.y.push(10);
@@ -207,6 +208,9 @@ class SnakeGame{
         var context = canv.getContext("2d");
         context.clearRect(0, 0, canv.width, canv.height);
         game = new SnakeGame();
+    }
+    function getUser() {
+          document.location.href="https://google.com";    
     }
     function postScore() {
        // if(justPost===false){
