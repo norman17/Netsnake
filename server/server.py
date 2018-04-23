@@ -24,8 +24,12 @@ def giveIndexCss():
 @app.route('/snake/snake.js', methods=['GET'])
 def giveSnakeJs():
     #return html file for the index
-    print "hello world"
+    #print "hello world"
     return send_from_directory('snake', 'snake.js')
+
+@app.route('/about', methods =['GET'])
+def giveAboutPage():
+    return send_from_directory('templates', 'about.html')
 
 @app.route('/player/<playername>')
 def givePlayerData(playername):
