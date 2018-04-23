@@ -10,10 +10,18 @@ p {
     padding: "10px";
 }
 
+h1 {
+padding: 2px 5px 2px;
+}
+
+#searcher {
+    padding: 2px 5px 2px;
+}
+
 #rules{
 
    /* background: green;*/
 }
 img {
-    padding: 2px 10px 2px;
+    padding: 2px 5px 2px;
 }

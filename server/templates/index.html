@@ -13,11 +13,14 @@
             <div class="row">  
                 <nav class = "navbar nabar-expand-lg navbar-light bg-light">
                     <a class="navbar-brand">Snake</a>
-                   
-                    <button class="btn btn-outline-success" type="button">View HighScore</button>
-                    <button class="btn btn-outline-success" type="button">About</button>
+                   <a class="nav-link" href="https://www.google.com">View High Scores</a>
+                   <a class="nav-link" href="https://www.google.com">About</a>
                     <h1 align="center">Snake the Video Game</h1>
-                    <img src="https://i.kinja-img.com/gawker-media/image/upload/s--Enlk8SCn--/c_scale,fl_progressive,q_80,w_800/ezkwu6j28tvjpxrs3hxw.jpg" alt="Smiley face" height="60" width="360">
+                    <form id="searcher" action="">
+                        <input type="form-contol mr-sm-2" type="search" placeholder="username">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit">Search Scores</button>
+                    </form>
+                   
                 </nav>
             </div>
         <div class="row">
@@ -27,8 +30,8 @@
             <h3>Rules of game: Eat the apples and don't run into the wall or yourself</h3>
         </div>
         <div class="row" id="rules">
-                <div class="col-md-5" >
-                    
+                <div class="col-md-4" >
+                    <button type="button" class="btn btn-success" onclick="startGame()">Start Game!</button>
                 </div>
             <div class="col-md-1" >
                 <h3>Score: </h3>
@@ -43,7 +46,7 @@
         </div>
 
         <div class="row">
-        <button type="button" class="btn btn-primary" onclick="startGame()">Start Game!</button>
+        
     <!-- <form action="/postscore" method="post"> <!THIS DOESN'T WORK> -->
         <input type="text" name="username" placeholder="Username" id="username"><br>
         <input type="submit" class="btn btn-primary" value="Submit Score!" onclick="postScore()">
