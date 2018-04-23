@@ -6,9 +6,25 @@ cd server
 
 export FLASK_APP=server.py
 
-flask run --host=0.0.0.0 >> server.log 2>&1 & 
+nohup flask run --host=0.0.0.0 > server.log 2>&1 & 
 
 cd ..
 
 echo "Done. Server log can be found in server/server.log"
+
+echo "Process ID and path are as follows:"
+
+echo
+
+ps faux | grep [f]lask
+
+echo
+
+echo "If no process ID or is listed above, the server has failed to start."
+
+echo "If more than one process is listed above, the server was already running. Check server.log for more info."
+
+echo "If you are running this on the original machine, the game can be reached at http://netsnake.freefall.in:5000"
+
+echo "Otherwise, try port 5000 on your local loopback or external IP."
 
