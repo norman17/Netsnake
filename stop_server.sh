@@ -2,7 +2,7 @@
 
 echo "Stopping Server..."
 
-pkill flask
+pkill -u $USER flask
 
 echo "Done."
 
