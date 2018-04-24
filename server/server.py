@@ -71,7 +71,7 @@ def giveScorboardCss():
 def giveScoreboardJs():
     #return html file for the index
     print "hello world"
-    return send_from_directory('scoreboard', 'scoreboard.js')
+    return send_from_directory('snake', 'scoreboard.js')
 
 @app.route('/scoreboard', methods=['GET'])
 def giveScoreboard():
