@@ -17,8 +17,10 @@
                    <a class="nav-link" href="/about">About</a>
                     <h1 align="center">Snake the Video Game</h1>
 
-                        <input type="form-contol mr-sm-2" type="search" placeholder="username" id="user">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit" onclick="getUserScores()">Search Score</button>
+		<form method="get" action="/player">
+			<input name="username" type="text" placeholder="username">
+			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search Scores">
+		</form>
                 </nav>
             </div>
         <div class="row">
