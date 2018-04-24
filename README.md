@@ -1,6 +1,6 @@
 # Netsnake
 ## Bootstrap
 ## JQuery
-## Added Bangers font from google api
+## Added Bangers font from google api fonts
 ## Mango DB
 ## Flask
