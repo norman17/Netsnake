@@ -102,7 +102,7 @@ def postScore():
     app.logger.info(username)
     app.logger.info(submitted_date)
 
-    insquery = "INSERT INTO highscores (name, score, date) VALUES (\"" + username + "\"," + str(score) + ",\"" + submitted_date.strftime('%Y-%m-%d') + "\")"
+    insquery = "INSERT INTO highscores (name, score, date) VALUES (\"" + username + "\"," + str(score) + ",\"" + submitted_date.strftime('%Y-%m-%d') + "\") ON DUPLICATE KEY UPDATE score = GREATEST(score, VALUES(score)), date = if(VALUES(score) > score, VALUES(date), date)" 
 
     try:
         cursor.execute(insquery)
