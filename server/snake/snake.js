@@ -8,7 +8,6 @@ class SnakeGame{
         this.context =snakeCanvas.getContext("2d");
         this.scoreBoard = document.getElementById("scoreBoard");
         this.scoreContext= scoreBoard.getContext("2d");
-        this.scoreContext.fillRect(10,30,50,50);
         this.food=0;
   //      justPost=false;
         this.foodOnBoard={x:[],y:[],};
