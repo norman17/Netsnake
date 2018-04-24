@@ -70,16 +70,28 @@ class SnakeGame{
         for( i=0; i < this.foodOnBoard.x.length;i++){
             if(this.snakeHead.x == this.foodOnBoard.x[i] && this.snakeHead.y == this.foodOnBoard.y[i]){
                 this.score += 50;
-                if(this.foodOnBoard.x[i] + 50<this.snakeCanvas.width&&this.foodOnBoard.y[i] + 50<this.snakeCanvas.height){
-                this.foodOnBoard.x[i] += 50;
-                this.foodOnBoard.y[i] += 50;
-                this.addFood(Math.random(1, this.snakeCanvas.width),Math.random(1, this.snakeCanvas.height),10,"red");}
-                else{
-                    this.foodOnBoard.x[i] = 30;
-                    this.foodOnBoard.y[i] = 30;
-                    this.addFood(30,30,10,"red");
-
+                var isFilled=0;
+                var c=0;
+                while(isFilled===0){
+                this.foodOnBoard.x[i] = Math.floor(Math.random()*this.snakeCanvas.width/10)*10+10;
+                this.foodOnBoard.y[i] = Math.floor(Math.random()*this.snakeCanvas.height/10)*10+10;
+                isFilled=1;
+                for(c=0;c<this.x.length;c++){ 
+                  if(this.x[c]===this.foodOnBoard.x[i]&&this.y[c]===this.foodOnBoard.y[i]){
+                      isFilled=0;
+                  }  
+            }
+            for(c=0;c<this.obstacle.x.length;c++){ 
+                if(this.obstacle.x[c]===this.foodOnBoard.x[i]&&this.obstacle.y[c]===this.foodOnBoard.y[i]){
+                    isFilled=0;
+                }  
+          }
                 }
+                console.log(this.foodOnBoard.x[i]);
+                console.log(this.foodOnBoard.y[i]);
+            
+                this.addFood(this.foodOnBoard.x[i],this.foodOnBoard.y[i],10,"red");
+            
                 this.food=2;
                 if(this.x[0] !== 0 || this.y[0] !== 0){
                     var greyx=-10;
