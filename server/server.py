@@ -16,6 +16,11 @@ def giveIndex():
     #return html file for the index
     return send_from_directory('templates', 'index.html')
 
+@app.route('/index.html', methods=['GET'])
+def giveIndexAlt():
+    #return html file for the index
+    return send_from_directory('templates', 'index.html')
+
 @app.route('/index.css', methods=['GET'])
 def giveIndexCss():
     #return html file for the index
