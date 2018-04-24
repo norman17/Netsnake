@@ -117,9 +117,9 @@ class SnakeGame{
                     this.obstacle.x.push(this.x[0]+greyx)
                     this.obstacle.y.push(this.y[0]+greyy)
                     this.addFood(this.x[0]+greyx,this.y[0]+greyy,10,"grey");
-                    if(this.obstacle.x.length>15){
-                        this.clearEnd(10,this.obstacle.x.shift(),this.obstacle.y.shift())
-                    }
+                    //if(this.obstacle.x.length>15){
+                     //   this.clearEnd(10,this.obstacle.x.shift(),this.obstacle.y.shift())
+                    //}
                 }
             }
         }
