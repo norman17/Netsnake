@@ -41,7 +41,7 @@ class SnakeGame{
     }
 
     randomNumber(num){
-       return Math.floor(Math.random()*num/10)*10+10;
+       return Math.floor(Math.random()*(num-20)/10)*10+10;
     }
 
     //updates snakecanvas
@@ -89,6 +89,11 @@ class SnakeGame{
                 if(this.obstacle.x[c]===this.foodOnBoard.x[i]&&this.obstacle.y[c]===this.foodOnBoard.y[i]){
                     isFilled=0;
                 }  
+          }
+          for(c=0;c<this.foodOnBoard.x.length;c++){
+              if(c!==i&&this.foodOnBoard.x[c]===this.foodOnBoard.x[i]&&this.foodOnBoard.y[c]===this.foodOnBoard.y[i]){
+                  isFilled=0;
+              }
           }
                 }
             
