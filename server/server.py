@@ -38,11 +38,11 @@ def giveAboutPage():
 
 @app.route('/player')
 def givePlayerData():
-    playername = request.args.get('username')
+    playername = request.args.get('user')
     mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
     cursor = mdbconnection.cursor()
     qstr = "SELECT score, date FROM highscores WHERE name = \""
-    qstr += playername
+    qstr += str(playername)
     qstr += "\" ORDER BY score DESC LIMIT 10"
     try:
         cursor.execute(qstr)

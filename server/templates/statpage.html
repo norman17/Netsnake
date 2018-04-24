@@ -11,13 +11,15 @@
             <div class="container" id="contained">
                     <div class="row">
             <nav class = "navbar nabar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/index.html">Snake</a>
+                    <a class="navbar-brand" href="/">Snake</a>
                         <a class="nav-link" href="/players">View High Scores</a>
                    <a class="nav-link" href="/about">About</a>
                     <h1 align="center">Snake the Video Game</h1>
     
-                        <input type="form-contol mr-sm-2" type="search" placeholder="username" id="user">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="Submit" onclick="getUserScores()">Search Scores</button>
+		<form method="get" action="../player">
+			<input name="user" type="text" placeholder="username">
+			<input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search Scores">
+		</form>
                 </nav>
                     </div>
                     <div class="row">
