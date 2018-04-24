@@ -1,0 +1,25 @@
+body {
+    /*please change the background at some point*/
+    background: rgb(38, 128, 90);
+    font-family: 'Bangers', cursive;
+}
+canvas {
+    background: black;
+}
+p {
+    padding: "10px";
+}
+
+h1 {
+padding: 2px 5px 2px;
+}
+
+#searcher {
+    padding: 2px 5px 2px;
+}
+ul {
+    background: black;  
+}
+img {
+    padding: 2px 5px 2px;
+}
