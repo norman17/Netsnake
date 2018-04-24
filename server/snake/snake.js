@@ -40,6 +40,11 @@ class SnakeGame{
         isrunning = 1;
 
     }
+
+    randomNumber(num){
+       return Math.floor(Math.random()*num/10)*10+10;
+    }
+
     //updates snakecanvas
     updateSnakeCanvas(){
         this.x.push(this.snakeHead.x);
@@ -73,8 +78,8 @@ class SnakeGame{
                 var isFilled=0;
                 var c=0;
                 while(isFilled===0){
-                this.foodOnBoard.x[i] = Math.floor(Math.random()*this.snakeCanvas.width/10)*10+10;
-                this.foodOnBoard.y[i] = Math.floor(Math.random()*this.snakeCanvas.height/10)*10+10;
+                this.foodOnBoard.x[i] = this.randomNumber(this.snakeCanvas.width);
+                this.foodOnBoard.y[i] = this.randomNumber(this.snakeCanvas.height);
                 isFilled=1;
                 for(c=0;c<this.x.length;c++){ 
                   if(this.x[c]===this.foodOnBoard.x[i]&&this.y[c]===this.foodOnBoard.y[i]){
@@ -87,8 +92,6 @@ class SnakeGame{
                 }  
           }
                 }
-                console.log(this.foodOnBoard.x[i]);
-                console.log(this.foodOnBoard.y[i]);
             
                 this.addFood(this.foodOnBoard.x[i],this.foodOnBoard.y[i],10,"red");
             
@@ -110,7 +113,7 @@ class SnakeGame{
                     this.obstacle.x.push(this.x[0]+greyx)
                     this.obstacle.y.push(this.y[0]+greyy)
                     this.addFood(this.x[0]+greyx,this.y[0]+greyy,10,"grey");
-                    if(this.obstacle.x.length>3){
+                    if(this.obstacle.x.length>15){
                         this.clearEnd(10,this.obstacle.x.shift(),this.obstacle.y.shift())
                     }
                 }
