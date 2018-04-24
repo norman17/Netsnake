@@ -1,5 +1,6 @@
 # Netsnake
 ## Team: Quinn Spillane(qspillan@purdue.edu), Samuel Klarquist(sklarqui@purdue.edu), Kendal Norman (norman17@purdue.edu)
+## Note: Quinn's commits may appear in commit log as belonging to 'ubuntu'.
 # Description
 ## This website is a competitive multi-user implementation of the classic nokia-phone game snake. The game adds a competitive element by allowing the user to submit their score to the score database, so that players can look it up with their username or if their score is high enough be displayed on the highscore page. The website has 4 webpages: The Main Game Page, where users can play Snake and submit their score, the About Page, which gives information about the game, the Highscore Page, that displays highscores, and the Search User Score Page, which that displays the score search results for an individual user. 
 # Technologies used:
