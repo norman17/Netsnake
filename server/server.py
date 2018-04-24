@@ -47,7 +47,7 @@ def givePlayerData(playername):
         cursor.execute(qstr)
     except mariadb.Error as error:
         print ("Error: {}".format(error))
-    response = "High scores for " + playername + "\n"
+    response = "High score for " + playername + ":\n"
     for score, date in cursor:
         response += "Date: " + date.strftime('%Y-%m-%d') + " Score: " + str(score) + "\n"
     return render_template("statpage.html", text = response.split('\n'))
