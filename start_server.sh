@@ -6,7 +6,7 @@ cd server
 
 export FLASK_APP=server.py
 
-nohup flask run --host=0.0.0.0 > server.log 2>&1 & 
+nohup flask run --host=0.0.0.0 > server.log 2>&1 &
 
 cd ..
 

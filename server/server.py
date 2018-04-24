@@ -36,8 +36,9 @@ def giveSnakeJs():
 def giveAboutPage():
     return send_from_directory('templates', 'about.html')
 
-@app.route('/player/<playername>')
-def givePlayerData(playername):
+@app.route('/player')
+def givePlayerData():
+    playername = request.args.get('username')
     mdbconnection = mariadb.connect(user='netsnakeserver', password='sneksneksnek', database='netsnake')
     cursor = mdbconnection.cursor()
     qstr = "SELECT score, date FROM highscores WHERE name = \""
