@@ -3,7 +3,8 @@
     function getUserScores() {
        // if(justPost===false){
             var username = document.getElementById("user").value;
-            fetch('/player/' + username, { method: 'GET' })
+	    window.location.assign('/player/ + username');
+            //fetch('/player/' + username, { method: 'GET' })
             /*
             var xml = new XMLHttpRequest();
             xml.onreadystatechange = function() {
