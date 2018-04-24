@@ -16,6 +16,11 @@ def giveIndex():
     #return html file for the index
     return send_from_directory('templates', 'index.html')
 
+@app.route('/index.html', methods=['GET'])
+def giveIndexAlt():
+    #return html file for the index
+    return send_from_directory('templates', 'index.html')
+
 @app.route('/index.css', methods=['GET'])
 def giveIndexCss():
     #return html file for the index
@@ -42,7 +47,7 @@ def givePlayerData(playername):
         cursor.execute(qstr)
     except mariadb.Error as error:
         print ("Error: {}".format(error))
-    response = "High scores for " + playername + "\n"
+    response = "High score for " + playername + ":\n"
     for score, date in cursor:
         response += "Date: " + date.strftime('%Y-%m-%d') + " Score: " + str(score) + "\n"
     return render_template("statpage.html", text = response.split('\n'))
@@ -102,7 +107,7 @@ def postScore():
     app.logger.info(username)
     app.logger.info(submitted_date)
 
-    insquery = "INSERT INTO highscores (name, score, date) VALUES (\"" + username + "\"," + str(score) + ",\"" + submitted_date.strftime('%Y-%m-%d') + "\")"
+    insquery = "INSERT INTO highscores (name, score, date) VALUES (\"" + username + "\"," + str(score) + ",\"" + submitted_date.strftime('%Y-%m-%d') + "\") ON DUPLICATE KEY UPDATE score = GREATEST(score, VALUES(score)), date = if(VALUES(score) > score, VALUES(date), date)" 
 
     try:
         cursor.execute(insquery)
